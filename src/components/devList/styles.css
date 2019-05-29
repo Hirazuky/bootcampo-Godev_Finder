@@ -1,0 +1,58 @@
+#list {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 2%;
+  left: 1%;
+
+  width: 20%;
+  height: 95%;
+  background: #fefefb;
+  box-shadow: 2px 2px 10px #888;
+  border-radius: 5px;
+}
+
+.info {
+  margin: 10px 20px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6e6e6;
+  font-family: sans-serif;
+}
+
+.info:first-child {
+  margin-top: 30px;
+}
+
+.info:last-child {
+  border-bottom: none;
+}
+
+.nameLogin {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.nameLogin h1,
+p {
+  margin: 1px 10%;
+}
+
+.nameLogin h1 {
+  font-size: 18px;
+}
+
+.nameLogin p {
+  font-size: 12px;
+  color: #808080;
+}
+
+.close {
+  margin-right: 2%;
+}
+
+.close:hover {
+  cursor: pointer;
+}

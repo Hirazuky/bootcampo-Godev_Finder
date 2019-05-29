@@ -1,0 +1,10 @@
+.mapGL {
+  position: absolute;
+  z-index: -1;
+}
+
+img {
+  border-radius: 100%;
+  width: 48px;
+  height: 48px;
+}
