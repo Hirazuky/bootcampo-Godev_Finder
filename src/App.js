@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DevList from "./components/devList/devList";
 
 toast.configure({
-  autoClose: 5000,
+  autoClose: 3000,
   position: "top-center"
 });
 export default class App extends Component {

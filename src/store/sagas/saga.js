@@ -12,7 +12,7 @@ export function* addRepo(action) {
     );
 
     if (isDuplicated) {
-      yield put(reducersActions.addRepositoryFailure("Repositório Duplicado"));
+      yield put(reducersActions.addRepositoryFailure("Usuário Duplicado"));
     } else {
       const repositoryData = {
         id: data.id,
@@ -30,8 +30,6 @@ export function* addRepo(action) {
       );
     }
   } catch (err) {
-    yield put(
-      reducersActions.addRepositoryFailure("Erro ao adicionar repositorio")
-    );
+    yield put(reducersActions.addRepositoryFailure("Usuário não encontrado"));
   }
 }

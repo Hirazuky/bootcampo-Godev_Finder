@@ -5,11 +5,31 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Actions as repoActions } from "../../store/ducks/reducers";
 
+//Mensagens de erro/sucesso
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./styles.css";
 
 class ModalAddUser extends Component {
   state = {
     inputUser: ""
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.data.showMessage) {
+      this.showMessage();
+    }
+  }
+
+  showMessage = () => {
+    if (this.props.data.error === null) {
+      toast.success("Usuário adicionado com sucesso!");
+    } else {
+      toast.error(this.props.data.error);
+    }
+
+    this.props.stopShowMessage();
   };
 
   handleAddUser = event => {

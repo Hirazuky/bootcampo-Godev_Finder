@@ -8,7 +8,8 @@ export const Types = {
   ADD_FAILURE: "reducers/ADD_FAILURE",
   OPEN_MODAL: "reducers/OPEN_MODAL",
   CLOSE_MODAL: "reducers/CLOSE_MODAL",
-  CLOSE_USER: "reducers/CLOSE_USER"
+  CLOSE_USER: "reducers/CLOSE_USER",
+  STOP_SHOW_MESSAGE: "reducers/STOP_SHOW_MESSAGE"
 };
 
 /**
@@ -17,7 +18,7 @@ export const Types = {
 
 const INITIAL_STATE = {
   repos: [],
-  loading: false,
+  showMessage: false,
   error: null,
   showModal: false,
   latClick: null,
@@ -29,6 +30,7 @@ export default function reducers(state = INITIAL_STATE, action) {
     case Types.OPEN_MODAL:
       return {
         ...state,
+        showMessage: false,
         showModal: true,
         latClick: action.payload.lat,
         longClick: action.payload.long
@@ -41,7 +43,7 @@ export default function reducers(state = INITIAL_STATE, action) {
         repos: [...state.repos.filter(repo => repo.id !== action.payload.id)]
       };
     case Types.ADD_REQUEST:
-      return { ...state, loading: true, error: null };
+      return { ...state, showMessage: false, error: null };
     case Types.ADD_SUCCESS:
       const data = {
         ...action.payload.data,
@@ -50,7 +52,7 @@ export default function reducers(state = INITIAL_STATE, action) {
       };
       return {
         ...state,
-        loading: false,
+        showMessage: true,
         error: null,
         showModal: false,
         repos: [...state.repos, data]
@@ -58,8 +60,13 @@ export default function reducers(state = INITIAL_STATE, action) {
     case Types.ADD_FAILURE:
       return {
         ...state,
-        loading: false,
+        showMessage: true,
         error: action.payload.error
+      };
+    case Types.STOP_SHOW_MESSAGE:
+      return {
+        ...state,
+        showMessage: false
       };
     default:
       return state;
@@ -83,6 +90,10 @@ export const Actions = {
   closeUser: id => ({
     type: Types.CLOSE_USER,
     payload: { id }
+  }),
+
+  stopShowMessage: () => ({
+    type: Types.STOP_SHOW_MESSAGE
   }),
 
   addRepositoryRequest: (repository, lat, long) => ({
