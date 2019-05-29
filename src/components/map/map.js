@@ -47,7 +47,6 @@ class Map extends Component {
   };
 
   render() {
-    console.log(this.props.users.repos);
     return (
       <MapGL
         {...this.state.viewport}
@@ -73,7 +72,7 @@ class Map extends Component {
             onClick={this.handleMapClick}
             captureClick={true}
           >
-            <img src={user.avatar} alt="avatar" />
+            <img src={user.avatar} alt="avatar" className="marker" />
           </Marker>
         ))}
       </MapGL>

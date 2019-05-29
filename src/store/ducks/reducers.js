@@ -36,7 +36,6 @@ export default function reducers(state = INITIAL_STATE, action) {
     case Types.CLOSE_MODAL:
       return { ...state, showModal: false, latClick: null, longClick: null };
     case Types.CLOSE_USER:
-      console.log(state.repos.filter(repo => repo.id !== action.payload.id));
       return {
         ...state,
         repos: [...state.repos.filter(repo => repo.id !== action.payload.id)]
